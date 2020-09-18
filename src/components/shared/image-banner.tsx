@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
+// Top level image banner
 const ImageBanner: React.FC<Props> = () => {
   const data = useStaticQuery(graphql`
     query {

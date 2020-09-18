@@ -16,12 +16,8 @@ const LinkWrapper = styled(Link)`
     color: transparent;
     background-color: transparent;
   }
-  :selected {
-    color: transparent;
-    background-color: transparent;
-  }
 `
-
+// Container for all the users posts
 const PostContainer: React.FC = () => {
 
   const query = useStaticQuery(graphql`
@@ -48,7 +44,7 @@ const PostContainer: React.FC = () => {
     <>
     {
         posts.map(a =>
-          <LinkWrapper to={'post-' + a.id.toString()}>
+          <LinkWrapper to={'post-' + a.id.toString()} key={a.id}>
             <PostCardWrapper key={a.id}>
               <PostCard post={a} key={a.id}/>
             </PostCardWrapper>

@@ -21,6 +21,7 @@ const RightSection = styled.div`
   text-align: right;
 `
 
+// Render a single comment
 const Comment: React.FC<Props> = ({comment}) => {
   const {content, author, downvotes, upvotes} = comment;
 

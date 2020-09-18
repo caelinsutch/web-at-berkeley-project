@@ -20,6 +20,7 @@ const ContentWrapper = styled.div`
   padding: 2rem 5rem;
 `
 
+// Root component to wrap all pages and templates
 const Root: React.FC = ({children}) => (
 	<>
 		<GlobalStyle/>

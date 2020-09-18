@@ -40,12 +40,9 @@ const CommentWrapper = styled.div`
 `
 
 const PostTemplate: React.FC<Props> = ({ data, pageContext: {id} }) => {
-  const post = data.allDataJson.nodes[0].posts.filter(a => a.id == id)[0];
+  const post = data.allDataJson.nodes[0].posts.filter(a => a.id == id)[0]; // Filter out posts for the current ID
 
-  console.log(data);
-
-  console.log(post)
-  const differenceInDays = calculateDayDifference(post.published)
+  const differenceInDays = calculateDayDifference(post.published); // Get the differences ind ays
 
   return (
     <Root>
@@ -82,9 +79,10 @@ const PostTemplate: React.FC<Props> = ({ data, pageContext: {id} }) => {
         <SectionDivider/>
         <CommentSection>
           {
+            // Create all the comment components from the post comment
             post.comments ?
               post.comments.map(comment =>
-                <CommentWrapper key={comment.authors}>
+                <CommentWrapper key={comment.author}>
                   <Comment key={comment.author} comment={comment}/>
                 </CommentWrapper>)
                : <div/>

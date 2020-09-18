@@ -9,6 +9,7 @@ interface params {
   title?: string
 }
 
+// Create all the SEO and meta tags for the header
 const SEO: React.FC<params> = ({ description = '', meta = [], title }) => {
   const { site } = useStaticQuery(
     graphql`

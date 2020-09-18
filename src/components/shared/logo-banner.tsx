@@ -53,13 +53,12 @@ const SubredditTagLine = styled.h1`
   color: #003262;
 `
 
+// Top Level Logo Banner with subreddit name and tagline
 const LogoBanner: React.FC = () => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "berkeley-logo.png" }) {
         childImageSharp {
-          # Specify the image processing specifications right in the query.
-          # Makes it trivial to update as your page's design changes.
           fluid {
             ...GatsbyImageSharpFluid
           }
@@ -84,4 +83,4 @@ const LogoBanner: React.FC = () => {
   )
 }
 
-export default LogoBanner
+export default LogoBanner;
