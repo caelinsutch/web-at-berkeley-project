@@ -1,7 +1,29 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require(`path`)
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allDataJson {
+        nodes {
+          posts {
+            id
+          }
+        }
+      }
+    }
+  `)
+
+  result.data.allDataJson.nodes[0].posts.forEach(({id}) => {
+    createPage({
+      path: 'post-' + id.toString(),
+      component: path.resolve(`./src/templates/post.tsx`),
+      context: {
+        id,
+      },
+    })
+  })
+}
